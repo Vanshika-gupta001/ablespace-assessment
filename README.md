@@ -4,34 +4,13 @@ A full-stack task management app built for the AbleSpace Full Stack Developer
 (Fresher) technical assessment — a guest-authenticated kanban board with a
 NestJS API, tested, containerized, and CI-checked on every push.
 
-[![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/Vanshika-gupta001/ablespace-assessment/actions/workflows/ci.yml/badge.svg)](https://github.com/Vanshika-gupta001/ablespace-assessment/actions/workflows/ci.yml)
 
 **Live demo:** _add your deployed URL here after following [Deployment](#deployment)_
 **API docs:** `<backend-url>/api/docs` (Swagger UI, see [API documentation](#api-documentation))
 
 ---
 
-## ⚠️ Before you submit — read this
-
-This app was rebuilt against the actual Figma screenshots you shared —
-sidebar navigation, List/Board views with grouped status sections, task
-detail (subtasks, labels, comments/updates), a 6-color theme picker, and a
-Settings/Profile screen. Before submitting:
-
-1. Do a final side-by-side pass against the live Figma file — some exact
-   pixel values (spacing, font sizes, icon set) were approximated from
-   screenshots rather than Figma's Inspect panel.
-2. Review [Design decisions](#design-decisions) below, which lists what
-   was implemented and the deliberate simplifications (documented there
-   rather than left silent), and adjust the wording to your own voice.
-3. Complete [Part 2](#part-2--product-understanding) yourself — it
-   requires your actual AbleSpace account and the Caseload → Take Data
-   screen.
-4. Fill in the live demo and repo links above once deployed.
-5. Follow [Deployment](#deployment) to get a working public URL — the
-   brief explicitly rejects non-working URLs.
-
----
 
 ## Tech stack
 
