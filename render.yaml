@@ -1,0 +1,35 @@
+# Render "Blueprint" — connect this repo on Render and it reads this file
+# automatically to provision the backend (docs:
+# https://render.com/docs/blueprint-spec).
+#
+# NOTE on data persistence: Render's free web service tier does not support
+# persistent disks (those require a paid Starter instance or higher), so
+# this runs with an ephemeral filesystem — the SQLite file resets on every
+# deploy and after the free instance spins down from inactivity. That's a
+# reasonable fit here since every session in this app starts from a fresh
+# guest login anyway (there's no data meant to survive across visits). If
+# you want task data to persist across restarts, switch `plan: free` to
+# `plan: starter` below and uncomment the `disk:` block.
+services:
+  - type: web
+    name: ablespace-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false # set this to your deployed Vercel URL after the first deploy
+      - key: DB_PATH
+        value: ./ablespace.sqlite
+    # disk:
+    #   name: ablespace-data
+    #   mountPath: /data
+    #   sizeGB: 1
+    # (requires plan: starter or higher — also change DB_PATH above to
+    # /data/ablespace.sqlite if you enable this)

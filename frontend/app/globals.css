@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  /* Default accent (Emerald) — overridden per data-accent below. */
+  --accent-color: #2f9e8f;
+  --accent-color-soft: #e4f5f2;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Six accent options from Settings → Color Mode. Soft variants are used
+   for light chip backgrounds and stay legible in both themes. */
+[data-accent='amber'] {
+  --accent-color: #e8a23d;
+  --accent-color-soft: #fbeed9;
+}
+[data-accent='blue'] {
+  --accent-color: #5b8def;
+  --accent-color-soft: #e4ecfd;
+}
+[data-accent='pink'] {
+  --accent-color: #ec72c4;
+  --accent-color-soft: #fbe4f3;
+}
+[data-accent='rose'] {
+  --accent-color: #e8607a;
+  --accent-color-soft: #fbe1e6;
+}
+[data-accent='emerald'] {
+  --accent-color: #2f9e8f;
+  --accent-color-soft: #e4f5f2;
+}
+[data-accent='black'] {
+  --accent-color: #1a1d23;
+  --accent-color-soft: #e7e7e9;
+}
+.dark[data-accent] {
+  --accent-color-soft: color-mix(in srgb, var(--accent-color) 22%, transparent);
+}
+
+body {
+  @apply bg-surface-light text-slate-900 dark:bg-surface-dark dark:text-slate-100;
+}
+
+/* Native <select> and <option> elements only pick up dark styling from
+   `color-scheme` in some browsers, and not reliably for the open dropdown
+   list itself — so force it explicitly rather than leaving white-on-white
+   text in the popup. */
+.dark select {
+  background-color: #1c1f26;
+  color: #f1f5f9;
+}
+.dark select option {
+  background-color: #1c1f26;
+  color: #f1f5f9;
+}
+
+/* The date input's calendar icon is rendered dark-on-dark by default in
+   Chromium — invert it in dark mode so it stays visible. */
+.dark input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

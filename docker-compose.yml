@@ -1,0 +1,29 @@
+# Runs the full stack locally with one command: `docker compose up --build`.
+# Frontend -> http://localhost:3000, Backend -> http://localhost:4000
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '4000:4000'
+    environment:
+      PORT: 4000
+      JWT_SECRET: local-dev-secret-change-me
+      CORS_ORIGIN: http://localhost:3000
+      DB_PATH: /data/ablespace.sqlite
+    volumes:
+      - backend-data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:4000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+
+volumes:
+  backend-data:
