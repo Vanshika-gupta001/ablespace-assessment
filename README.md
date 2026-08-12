@@ -46,21 +46,15 @@ NestJS API, tested, containerized, and CI-checked on every push.
 
 ```mermaid
 flowchart LR
-    subgraph Client["Browser"]
-        UI["Next.js App Router\n(login, sidebar, tasks/projects, settings)"]
-    end
+    UI[Next.js frontend]
+    Guard[JwtAuthGuard]
+    Auth[AuthModule]
+    Users[UsersModule]
+    Tasks[TasksModule]
+    Projects[ProjectsModule]
+    DB[(SQLite)]
 
-    subgraph API["NestJS API"]
-        Auth["AuthModule\nPOST /auth/guest"]
-        Users["UsersModule\nGET/PATCH /users/me"]
-        Tasks["TasksModule\nCRUD /tasks, subtasks, comments"]
-        Projects["ProjectsModule\nCRUD /projects"]
-        Guard["JwtAuthGuard"]
-    end
-
-    DB[("SQLite\nvia TypeORM + sql.js")]
-
-    UI -- "Bearer JWT" --> Guard
+    UI --> Guard
     Guard --> Auth
     Guard --> Users
     Guard --> Tasks
