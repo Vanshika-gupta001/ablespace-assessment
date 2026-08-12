@@ -22,7 +22,9 @@ describe('UsersService', () => {
 
   it('creates a guest user with an auto-generated display name', async () => {
     repo.create.mockImplementation((data) => data);
-    repo.save.mockImplementation((data) => Promise.resolve({ id: 'u1', ...data }));
+    repo.save.mockImplementation((data) =>
+      Promise.resolve({ id: 'u1', ...data }),
+    );
 
     const user = await service.createGuest();
 

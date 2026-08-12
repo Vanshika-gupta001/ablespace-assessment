@@ -57,11 +57,7 @@ export class TasksService {
     return this.tasksRepo.save(task);
   }
 
-  async update(
-    id: string,
-    dto: UpdateTaskDto,
-    ownerId: string,
-  ): Promise<Task> {
+  async update(id: string, dto: UpdateTaskDto, ownerId: string): Promise<Task> {
     const task = await this.findOneForUser(id, ownerId);
     Object.assign(task, {
       ...dto,

@@ -7,7 +7,9 @@ import { Task, TaskPriority, TaskStatus } from './task.entity';
 import { Comment } from './comment.entity';
 import { UsersService } from '../users/users.service';
 
-type MockRepo<T extends object> = Partial<Record<keyof Repository<T>, jest.Mock>>;
+type MockRepo<T extends object> = Partial<
+  Record<keyof Repository<T>, jest.Mock>
+>;
 
 const createMockRepo = <T extends object>(): MockRepo<T> => ({
   find: jest.fn(),
@@ -94,7 +96,9 @@ describe('TasksService', () => {
   describe('findSubtasksForUser', () => {
     it('returns subtasks once the parent is confirmed to belong to the user', async () => {
       taskRepo.findOne!.mockResolvedValue(baseTask);
-      taskRepo.find!.mockResolvedValue([{ ...baseTask, id: 'sub-1', parentId: 'task-1' }]);
+      taskRepo.find!.mockResolvedValue([
+        { ...baseTask, id: 'sub-1', parentId: 'task-1' },
+      ]);
 
       const result = await service.findSubtasksForUser('task-1', ownerId);
 
@@ -155,7 +159,9 @@ describe('TasksService', () => {
       taskRepo.findOne!.mockResolvedValue(baseTask);
       usersService.findById.mockResolvedValue({ displayName: 'Updated Name' });
       commentRepo.create!.mockImplementation((c) => c);
-      commentRepo.save!.mockImplementation((c) => Promise.resolve({ id: 'c-1', ...c }));
+      commentRepo.save!.mockImplementation((c) =>
+        Promise.resolve({ id: 'c-1', ...c }),
+      );
 
       const result = await service.addComment('task-1', ownerId, {
         content: 'Looks good',

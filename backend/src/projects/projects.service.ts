@@ -30,7 +30,11 @@ export class ProjectsService {
     return this.repo.save(project);
   }
 
-  async update(id: string, dto: UpdateProjectDto, ownerId: string): Promise<Project> {
+  async update(
+    id: string,
+    dto: UpdateProjectDto,
+    ownerId: string,
+  ): Promise<Project> {
     const project = await this.findOneForUser(id, ownerId);
     Object.assign(project, {
       ...dto,

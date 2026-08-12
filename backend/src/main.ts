@@ -17,8 +17,15 @@ async function bootstrap() {
     }),
   );
 
+  // Trailing slashes are a common copy-paste mistake in the CORS_ORIGIN env
+  // var (e.g. "https://app.vercel.app/"), but the browser's Origin header
+  // never includes one — so strip it here rather than requiring an exact
+  // match on a value that's easy to get subtly wrong in a dashboard field.
+  const rawOrigin = config.get<string>('CORS_ORIGIN', 'http://localhost:3000');
+  const allowedOrigin = rawOrigin.trim().replace(/\/+$/, '');
+
   app.enableCors({
-    origin: config.get<string>('CORS_ORIGIN', 'http://localhost:3000'),
+    origin: allowedOrigin,
     credentials: true,
   });
 

@@ -40,7 +40,11 @@ export class ProjectsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateProjectDto, @Req() req: AuthedRequest) {
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateProjectDto,
+    @Req() req: AuthedRequest,
+  ) {
     return this.projectsService.update(id, dto, req.user.userId);
   }
 
