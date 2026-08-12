@@ -7,7 +7,6 @@ NestJS API, tested, containerized, and CI-checked on every push.
 [![CI](https://github.com/Vanshika-gupta001/ablespace-assessment/actions/workflows/ci.yml/badge.svg)](https://github.com/Vanshika-gupta001/ablespace-assessment/actions/workflows/ci.yml)
 
 **Live demo:** https://ablespace-assessment-psi.vercel.app/tasks
-
 **API docs:**  https://ablespace-backend-rv69.onrender.com
               (Swagger UI, see [API documentation](#api-documentation))
 
