@@ -281,6 +281,4 @@ pass against the live Figma file._
 
 ## Part 2 — Product Understanding
 
-Add your write-up or video walkthrough of the AbleSpace **Take Data**
-screen (Caseload tab) here, or link to it, along with the UX/functionality
-improvements you identified.
+https://drive.google.com/file/d/1KNkwj9j9daShad1vXgQRAn8M45_DvGqd/view?usp=sharing
